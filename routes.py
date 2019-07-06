@@ -4,7 +4,7 @@ import numpy as np
 
 app = Flask(__name__)
 
-model = joblib.load('etc.pkl')
+model = joblib.load('dtr.pkl')
 
 @app.route("/")
 def index():
