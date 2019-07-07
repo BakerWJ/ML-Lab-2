@@ -2,7 +2,8 @@
 {% block content %}
     <main>
         <div class="section-content">
-            <h2>Predicted price of home: ${{ prediction }}</h2>
+            <h2>Predicted price of {{ address }} is ${{ prediction }}</h2>
+            <h2>Reload for the price of another random address</h2>
         </div>
     </main>
 {% endblock %}
