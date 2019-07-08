@@ -21,7 +21,7 @@ def index():
     x = random.randint(1, 5000)
     address = data["ADDRESS"].iloc[x]
     prediction = model.predict([features.iloc[x]]).round(1)
-    prediction = str(prediction).lstrip('[').rstrip(']')
+    prediction = str(prediction).lstrip('[').rstrip(']').rstrip('.')
     return render_template("index.html", prediction=prediction, address=address)
 
 if __name__=="__main__":
