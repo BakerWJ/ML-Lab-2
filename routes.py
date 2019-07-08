@@ -5,7 +5,7 @@ import random
 
 app = Flask(__name__)
 
-model = joblib.load('dtr.pkl')
+model = joblib.load('forest.pkl')
 
 @app.route("/")
 def index():
@@ -20,8 +20,8 @@ def index():
     features = data[list(zipdummy.columns) + list(citydummy.columns) + ["BEDS", "BATHS", "SQFT", "AGE", "LOTSIZE", "CC", "MF", "SF"]]
     x = random.randint(1, 5000)
     address = data["ADDRESS"].iloc[x]
-    prediction = model.predict([features.iloc[x]])
-    prediction = str(prediction).lstrip('[').rstrip(']').rstrip('.')
+    prediction = model.predict([features.iloc[x]]).round(1)
+    prediction = str(prediction).lstrip('[').rstrip(']')
     return render_template("index.html", prediction=prediction, address=address)
 
 if __name__=="__main__":
